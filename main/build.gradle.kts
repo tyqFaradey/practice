@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
 
@@ -56,6 +57,7 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     implementation(libs.dagger.hilt)
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     ksp(libs.dagger.hilt.compiler)
 
     testImplementation(libs.junit)
