@@ -1,4 +1,4 @@
-package ci.nsu.mobile.main.ui.calculation.step1
+package ci.nsu.mobile.main.ui.calculation.step2
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -9,7 +9,7 @@ import ci.nsu.mobile.main.ui.calculation.CalculationViewModel
 import ci.nsu.mobile.main.ui.navigation.Screen
 
 @Composable
-fun Step1Route(navController: NavController, entry: NavBackStackEntry) {
+fun Step2Route(navController: NavController, entry: NavBackStackEntry) {
 
     val backStackEntry = remember(entry) {
         navController.getBackStackEntry(Screen.Calculation.route)
@@ -18,9 +18,9 @@ fun Step1Route(navController: NavController, entry: NavBackStackEntry) {
     val viewModel: CalculationViewModel =
         hiltViewModel(backStackEntry)
 
-    Step1Screen(
+    Step2Screen(
         viewModel = viewModel,
-        onNext = { navController.navigate(Screen.Step2.route) },
+        onResult = { navController.navigate(Screen.Result.route) },
         onBack = { navController.popBackStack() },
     )
 }

@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 import ci.nsu.mobile.main.data.local.DepositDao
 import ci.nsu.mobile.main.data.local.DepositEntity
+import kotlinx.coroutines.flow.StateFlow
 
 
 @Singleton
@@ -13,8 +14,12 @@ class DepositRepository @Inject constructor(
     private val dao: DepositDao
 ) {
 
-    suspend fun save(entity: DepositEntity) {
-        dao.insert(entity)
+    suspend fun insert(calculation: DepositEntity) {
+        dao.insert(calculation)
+    }
+
+    suspend fun deleteAll() {
+        dao.deleteAll()
     }
 
     fun getAll(): Flow<List<DepositEntity>> {
