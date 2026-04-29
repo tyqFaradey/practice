@@ -1,10 +1,11 @@
 package ci.nsu.mobile.main.model.dto
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+
 
 @Serializable
 data class LoginRequest(
-    val username: String,
-    val password: String
+    @SerialName("login") val username: String,
+    @SerialName("password") val password: String
 )

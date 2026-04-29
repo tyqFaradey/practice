@@ -1,10 +1,10 @@
 package ci.nsu.mobile.main.model.dto
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class GroupDto(
-    @SerializedName("groupId") val id: Int,
-    @SerializedName("groupName") val name: String
+    @SerialName("groupId") val id: Int,
+    @SerialName("groupName") val name: String
 )
