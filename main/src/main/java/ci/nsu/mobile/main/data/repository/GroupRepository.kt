@@ -3,7 +3,6 @@ package ci.nsu.mobile.main.data.repository
 import javax.inject.Inject
 
 import ci.nsu.mobile.main.core.network.api.ApiClient
-import ci.nsu.mobile.main.core.network.api.EndPoint
 import ci.nsu.mobile.main.model.dto.AuthResponse
 
 import ci.nsu.mobile.main.model.dto.GroupDto

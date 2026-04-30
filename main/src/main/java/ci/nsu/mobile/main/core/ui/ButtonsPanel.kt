@@ -17,8 +17,8 @@ fun ButtonsPanel(
     content: @Composable RowScope.() -> Unit
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth().padding(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         content()
     }

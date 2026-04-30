@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import ci.nsu.mobile.main.features.login.LoginRoute
 
 @Composable
 fun AppNavHost(modifier: Modifier = Modifier) {
@@ -15,7 +16,7 @@ fun AppNavHost(modifier: Modifier = Modifier) {
         startDestination = Screen.Login.route
     ) {
         composable(Screen.Login.route) {
-
+            LoginRoute(navController)
         }
         composable(Screen.Signin.route) {
 

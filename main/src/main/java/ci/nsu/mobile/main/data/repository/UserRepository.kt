@@ -4,7 +4,6 @@ import javax.inject.Inject
 
 
 import ci.nsu.mobile.main.core.network.api.ApiClient
-import ci.nsu.mobile.main.core.network.api.EndPoint
 import ci.nsu.mobile.main.model.dto.GroupDto
 
 import ci.nsu.mobile.main.model.dto.UserDto

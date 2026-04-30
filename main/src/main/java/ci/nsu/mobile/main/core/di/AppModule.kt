@@ -60,7 +60,7 @@ object AppModule {
         json: Json
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://192.168.0.29:8080/")
+            .baseUrl("http://172.17.104.79:8080/")
             .client(client)
             .addConverterFactory(
                 json.asConverterFactory("application/json".toMediaType())
@@ -75,33 +75,4 @@ object AppModule {
     ): ApiClient {
         return retrofit.create(ApiClient::class.java)
     }
-
-//    @Provides
-//    fun provideAuthRepository(
-//        apiClient: ApiClient,
-//        tokenManager: TokenManager
-//    ): AuthRepository {
-//        return AuthRepository(
-//            api = apiClient,
-//            tokenManager = tokenManager
-//        )
-//    }
-//
-//    @Provides
-//    fun provideGroupRepository(
-//        apiClient: ApiClient,
-//    ): GroupRepository {
-//        return GroupRepository(
-//            api = apiClient
-//        )
-//    }
-//
-//    @Provides
-//    fun provideUserRepository(
-//        apiClient: ApiClient,
-//    ): UserRepository {
-//        return UserRepository(
-//            api = apiClient
-//        )
-//    }
 }
