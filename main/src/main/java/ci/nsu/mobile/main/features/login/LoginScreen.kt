@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import ci.nsu.mobile.main.core.ui.BaseScreen
 import ci.nsu.mobile.main.core.ui.ButtonsPanel
 import ci.nsu.mobile.main.core.ui.ErrorsCard
+import ci.nsu.mobile.main.core.utils.Field
 
 
 val PADDING = 12.dp
@@ -36,8 +37,7 @@ fun LoginScreen(
     state: LoginState,
     onButtonClicked: () -> Unit,
     onLinkClicked: () -> Unit,
-    onUsernameChanged: (value: String) -> Unit,
-    onPasswordChanged: (value: String) -> Unit,
+    onFieldChanged: (field: Field, value: String) -> Unit,
 ) {
     BaseScreen(
         title = "Вход",
@@ -67,36 +67,42 @@ fun LoginScreen(
             }
         }
     ) {
-        OutlinedTextField(
-            label = { Text("Логин") },
-            value = state.username,
+        run {
+            val fieldName = Field.USERNAME
+            OutlinedTextField(
+                label = { Text("Логин") },
+                value = state.fields[fieldName].orEmpty(),
 
-            onValueChange = onUsernameChanged,
-            isError = state.usernameErrors.isNotEmpty(),
+                onValueChange = { onFieldChanged(fieldName, it) },
+                isError = state.errors[fieldName]?.isNotEmpty() ?: false,
 
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = PADDING, end = PADDING),
-            singleLine = true,
-        )
-        if (state.usernameErrors.isNotEmpty()) {
-            ErrorsCard(state.usernameErrors)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = PADDING, end = PADDING),
+                singleLine = true,
+            )
+            if ((state.errors[fieldName] ?: emptyList()).isNotEmpty()) {
+                ErrorsCard(state.errors[fieldName] ?: emptyList())
+            }
         }
 
-        OutlinedTextField(
-            label = { Text("Пароль") },
-            value = state.password,
+        run {
+            val fieldName = Field.PASSWORD
+            OutlinedTextField(
+                label = { Text("Пароль") },
+                value = state.fields[fieldName].orEmpty(),
 
-            onValueChange = onPasswordChanged,
-            isError = state.passwordErrors.isNotEmpty(),
+                onValueChange = { onFieldChanged(fieldName, it) },
+                isError = state.errors[fieldName]?.isNotEmpty() ?: false,
 
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = PADDING, end = PADDING),
-            singleLine = true,
-        )
-        if (state.passwordErrors.isNotEmpty()) {
-            ErrorsCard(state.passwordErrors)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = PADDING, end = PADDING),
+                singleLine = true,
+            )
+            if ((state.errors[fieldName] ?: emptyList()).isNotEmpty()) {
+                ErrorsCard(state.errors[fieldName] ?: emptyList())
+            }
         }
     }
 }
