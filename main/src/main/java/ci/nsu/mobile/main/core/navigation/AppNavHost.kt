@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import ci.nsu.mobile.main.features.auth.login.LoginRoute
+import ci.nsu.mobile.main.features.auth.register.RegisterRoute
 
 @Composable
 fun AppNavHost(modifier: Modifier = Modifier) {
@@ -18,7 +19,8 @@ fun AppNavHost(modifier: Modifier = Modifier) {
         composable(Screen.Login.route) {
             LoginRoute(navController)
         }
-        composable(Screen.Signin.route) {
+        composable(Screen.Register.route) {
+            RegisterRoute(navController)
         }
         composable(Screen.Main.route) {
 

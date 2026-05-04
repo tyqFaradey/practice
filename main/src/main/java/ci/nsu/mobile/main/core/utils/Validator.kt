@@ -1,5 +1,8 @@
 package ci.nsu.mobile.main.core.utils
 
+import ci.nsu.mobile.main.core.ui.FieldValue
+import kotlin.text.isBlank
+
 object Validator {
     fun validateUsername(value: String) : List<String> {
         val errors = validateBlank(value).toMutableList()
@@ -37,6 +40,6 @@ object Validator {
 
 enum class Field {
     USERNAME, PASSWORD, EMAIL, PHONE,
-    FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER, GROUPID
+    FIRSTNAME, LASTNAME, MIDDLENAME, BIRTHDATE, GENDER, GROUP
 }
 

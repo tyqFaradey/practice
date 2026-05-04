@@ -27,10 +27,10 @@ fun TextField(
     label: String,
     field: Field,
     value: String,
-    errors: List<String>?,
+    errors: List<String>,
     onValueChange: (field: Field, value: FieldValue) -> Unit,
 ) {
-    val isError = errors?.isNotEmpty()?: false
+    val isError = errors.isNotEmpty()
     OutlinedTextField(
         label = { Text(label) },
         value = value,

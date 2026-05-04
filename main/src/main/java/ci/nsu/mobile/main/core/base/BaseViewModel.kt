@@ -29,6 +29,10 @@ open class BaseViewModel<E, S> (
         Field.FIRSTNAME to Validator::validateBlank,
         Field.LASTNAME to Validator::validateBlank,
         Field.MIDDLENAME to Validator::validateBlank,
+
+        Field.GROUP to Validator::validateBlank,
+        Field.GENDER to Validator::validateBlank,
+        Field.BIRTHDATE to Validator::validateBlank,
     )
 
     fun validateField(field: Field, value: FieldValue): List<String> {
@@ -37,11 +41,17 @@ open class BaseViewModel<E, S> (
                 validators.getValue(field).invoke(value.value)
             }
             is FieldValue.Date -> {
-                emptyList()
+                if (value.value == null) listOf("обязательное поле") else emptyList()
             }
-            else -> {
-                emptyList()
+            is FieldValue.GenderValue -> {
+                if (value.value == null) listOf("обязательное поле") else emptyList()
             }
+            is FieldValue.Group -> {
+                if (value.value == null) listOf("обязательное поле") else emptyList()
+            }
+//            else -> {
+//                emptyList()
+//            }
         }
     }
 }
