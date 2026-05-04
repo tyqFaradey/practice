@@ -22,10 +22,20 @@ class AuthRepository @Inject constructor(
             val response = api.login(request)
 
             tokenManager.saveToken(response.token)
+            Log.d("1234", tokenManager.getToken()?: "!!!")
 
             response
         }
+    }
 
+    suspend fun register(request: RegisterRequest): Result<AuthResponse> {
+        return runCatching {
+            val response = api.register(request)
+
+            tokenManager.saveToken(response.token)
+
+            response
+        }
     }
 
     fun isLoggedIn(): Boolean {

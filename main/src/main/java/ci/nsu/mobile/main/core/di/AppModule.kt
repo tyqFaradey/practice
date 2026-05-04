@@ -1,25 +1,26 @@
 package ci.nsu.mobile.main.core.di
 
 import android.content.Context
-import ci.nsu.mobile.main.core.network.AuthInterceptor
-import ci.nsu.mobile.main.core.network.api.ApiClient
-import ci.nsu.mobile.main.data.local.storage.TokenManager
-import ci.nsu.mobile.main.data.repository.AuthRepository
-import ci.nsu.mobile.main.data.repository.GroupRepository
-import ci.nsu.mobile.main.data.repository.UserRepository
-import ci.nsu.mobile.main.model.dto.UserDto
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
+
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+
 import javax.inject.Singleton
+
+import ci.nsu.mobile.main.core.network.AuthInterceptor
+import ci.nsu.mobile.main.core.network.api.ApiClient
+import ci.nsu.mobile.main.data.local.storage.TokenManager
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -60,7 +61,7 @@ object AppModule {
         json: Json
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://172.17.104.79:8080/")
+            .baseUrl("http://192.168.0.29:8080/")
             .client(client)
             .addConverterFactory(
                 json.asConverterFactory("application/json".toMediaType())

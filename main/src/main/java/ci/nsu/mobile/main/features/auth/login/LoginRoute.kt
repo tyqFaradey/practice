@@ -1,4 +1,4 @@
-package ci.nsu.mobile.main.features.login
+package ci.nsu.mobile.main.features.auth.login
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -6,6 +6,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import ci.nsu.mobile.main.core.base.AppEvent
 
 
 @Composable
@@ -16,19 +17,16 @@ fun LoginRoute(
     LaunchedEffect(Unit) {
         viewModel.event.collect { event ->
             when (event) {
-                is LoginEvent.Navigate -> {
-                    navController.navigate(event.route)
-                }
+                is AppEvent.Navigate -> { navController.navigate(event.route) }
             }
         }
     }
 
-
     val state by viewModel.state.collectAsState()
     LoginScreen(
         state = state,
-        onButtonClicked = viewModel::onLogin,
-        onLinkClicked = {  },
-        onFieldChanged = viewModel::onFieldChange,
+        onButtonClick = viewModel::login,
+        onLinkClick = viewModel::toRegister,
+        onFieldChange = viewModel::onFieldChange,
     )
 }

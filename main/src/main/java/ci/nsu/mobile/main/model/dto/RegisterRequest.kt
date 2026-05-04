@@ -1,10 +1,11 @@
 package ci.nsu.mobile.main.model.dto
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class RegisterRequest(
-    val login: String,
+    @SerialName("login") val username: String,
     val password: String,
     val email: String,
     val phoneNumber: String,
