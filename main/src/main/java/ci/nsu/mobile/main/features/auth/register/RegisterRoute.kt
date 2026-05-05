@@ -19,6 +19,7 @@ fun RegisterRoute(
         viewModel.event.collect { event ->
             when (event) {
                 is AppEvent.Navigate -> { navController.navigate(event.route) }
+                else -> {}
             }
         }
     }

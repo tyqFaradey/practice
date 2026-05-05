@@ -1,6 +1,7 @@
 package ci.nsu.mobile.main.core.di
 
 import android.content.Context
+import ci.nsu.mobile.main.core.Settings
 
 import dagger.Module
 import dagger.Provides
@@ -20,6 +21,7 @@ import javax.inject.Singleton
 
 import ci.nsu.mobile.main.core.network.AuthInterceptor
 import ci.nsu.mobile.main.core.network.api.ApiClient
+import ci.nsu.mobile.main.core.settings
 import ci.nsu.mobile.main.data.local.storage.TokenManager
 
 @Module
@@ -61,7 +63,7 @@ object AppModule {
         json: Json
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://192.168.0.29:8080/")
+            .baseUrl(settings.api.url)
             .client(client)
             .addConverterFactory(
                 json.asConverterFactory("application/json".toMediaType())
