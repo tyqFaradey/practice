@@ -20,4 +20,9 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "practice"
-include(":main")
+//include(":api")
+
+include(":app")
+include(":core-common")
+
+include(":feature-auth")

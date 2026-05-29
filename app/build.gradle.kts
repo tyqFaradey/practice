@@ -1,10 +1,9 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
-
     alias(libs.plugins.ksp)
 
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt)
     alias(libs.plugins.serialization)
 }
@@ -12,7 +11,6 @@ plugins {
 dependencies {
     implementation(project(":core-common"))
     implementation(project(":feature-auth"))
-
 
     implementation(platform(libs.compose.bom))
     implementation(libs.core.ktx)
@@ -29,11 +27,20 @@ dependencies {
 }
 
 android {
-    namespace = "com.example.main"
+    namespace = "com.example.app"
     compileSdk = 36
 
+    buildFeatures {
+        compose = true
+    }
+
+
     defaultConfig {
+        applicationId = "com.example.app"
         minSdk = 29
+        targetSdk = 36
+        versionCode = 1
+        versionName = "1.0"
     }
 
     buildTypes {

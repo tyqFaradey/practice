@@ -1,35 +1,23 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
 
     alias(libs.plugins.ksp)
 
     alias(libs.plugins.hilt)
-    alias(libs.plugins.serialization)
 }
 
 dependencies {
-    implementation(project(":core-common"))
-    implementation(project(":feature-auth"))
-
-
-    implementation(platform(libs.compose.bom))
-    implementation(libs.core.ktx)
-
-    implementation(libs.activity.compose)
-    implementation(libs.navigation.compose)
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.ui)
-    implementation(libs.material3)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
 
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
-    implementation(libs.hilt.navigation.compose)
 }
 
 android {
-    namespace = "com.example.main"
+    namespace = "com.example.core_common"
     compileSdk = 36
 
     defaultConfig {
