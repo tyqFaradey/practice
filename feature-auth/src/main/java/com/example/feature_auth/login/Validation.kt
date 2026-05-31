@@ -21,14 +21,14 @@ class LoginFormValidator @Inject constructor(
     private val passwordValidator: PasswordValidator,
 ) {
     fun validate(form: LoginForm): LoginFormValidationResult {
-        val emailRes = loginValidator.validate(form.login)
+        val loginRes = loginValidator.validate(form.login)
         val passwordRes = passwordValidator.validate(form.password)
 
-        val isFormValid = emailRes.isValid && passwordRes.isValid
+        val isFormValid = loginRes.isValid && passwordRes.isValid
 
         return LoginFormValidationResult(
             isValid = isFormValid,
-            loginErrors = emailRes.errors,
+            loginErrors = loginRes.errors,
             passwordErrors = passwordRes.errors,
         )
     }

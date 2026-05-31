@@ -1,6 +1,6 @@
 package com.example.feature_auth.api.schemas
 
-import com.example.core_common.schemas.Person
+import com.example.feature_auth.api.schemas.Person
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

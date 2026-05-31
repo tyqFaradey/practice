@@ -6,8 +6,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 import com.example.core_common.BaseViewModel
+import com.example.core_validation.rules.BlankValidator
+import com.example.core_validation.rules.EmailValidator
 import com.example.core_validation.rules.PasswordValidator
 import com.example.core_validation.rules.LoginValidator
+import com.example.core_validation.rules.PhoneValidator
+import com.example.feature_auth.register.RegisterForm
+import com.example.feature_auth.register.RegisterFormValidator
+import com.example.feature_auth.register.RegisterState
 import com.example.feature_auth.repository.AuthRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -15,7 +21,9 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val repository: AuthRepository,
+
     private val formValidator: LoginFormValidator,
+
     private val loginValidator: LoginValidator,
     private val passwordValidator: PasswordValidator,
 ) : BaseViewModel<LoginEvent, LoginState>(

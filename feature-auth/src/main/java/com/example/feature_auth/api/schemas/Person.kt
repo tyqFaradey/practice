@@ -1,6 +1,7 @@
-package com.example.core_common.schemas
+package com.example.feature_auth.api.schemas
 
 import kotlinx.serialization.Serializable
+
 @Serializable
 data class Person(
     val firstName: String,

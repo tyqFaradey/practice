@@ -22,10 +22,16 @@ fun RegisterRoute(
         }
     }
 
-    LoginScreen(
+    RegisterScreen(
         state = state,
+        onFirstNameChanged = viewModel::onFirstNameChanged,
+        onLastNameChanged = viewModel::onLastNameChanged,
+        onMiddleNameChanged = viewModel::onMiddleNameChanged,
         onLoginChanged = viewModel::onLoginChanged,
+        onEmailChanged = viewModel::onEmailChanged,
+        onPhoneChanged = viewModel::onPhoneChanged,
         onPasswordChanged = viewModel::onPasswordChanged,
-        onLoginClick = viewModel::register
+        onRegisterClick = viewModel::onFormSubmit,
+        onToLogin = viewModel::toLogin
     )
 }

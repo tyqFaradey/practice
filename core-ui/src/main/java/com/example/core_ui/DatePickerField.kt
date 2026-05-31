@@ -23,19 +23,23 @@ import androidx.compose.ui.Modifier
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+
+private const val DATE_PATTERN = "dd-MM-yyyy"
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BirthDateField(
-    value: LocalDate?,
+    value: String   ,
     errors: List<String>,
-    onDateSelect: (LocalDate) -> Unit
+    onDateSelect: (String) -> Unit
 ) {
     val isError = errors.isNotEmpty()
     var open by remember { mutableStateOf(false) }
+    val formatter = remember { DateTimeFormatter.ofPattern(DATE_PATTERN) }
 
     OutlinedTextField(
-        value = value?.toString() ?: "",
+        value = value,
         onValueChange = {},
         isError = isError,
         readOnly = true,
@@ -50,8 +54,18 @@ fun BirthDateField(
         }
     )
 
+
     if (open) {
-        val state = rememberDatePickerState()
+        val initialMillis = remember(value) {
+            runCatching {
+                LocalDate.parse(value, formatter)
+                    .atStartOfDay(ZoneId.systemDefault())
+                    .toInstant()
+                    .toEpochMilli()
+            }.getOrNull()
+        }
+
+        val state = rememberDatePickerState(initialSelectedDateMillis = initialMillis)
 
         DatePickerDialog(
             onDismissRequest = { open = false },
@@ -65,7 +79,8 @@ fun BirthDateField(
                                 .atZone(ZoneId.systemDefault())
                                 .toLocalDate()
 
-                            onDateSelect(date)
+                            val formattedDate = date.format(formatter)
+                            onDateSelect(formattedDate)
                         }
                         open = false
                     }
