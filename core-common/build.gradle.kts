@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.ksp)
 
     alias(libs.plugins.hilt)
+    alias(libs.plugins.serialization)
 }
 
 dependencies {
@@ -14,6 +15,8 @@ dependencies {
 
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
+
+    implementation(libs.kotlinx.serialization.json)
 }
 
 android {

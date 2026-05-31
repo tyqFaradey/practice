@@ -24,5 +24,12 @@ rootProject.name = "practice"
 
 include(":app")
 include(":core-common")
+include(":core-network")
+
+include(":api")
+
+
 
 include(":feature-auth")
+include(":core-validation")
+include(":core-ui")

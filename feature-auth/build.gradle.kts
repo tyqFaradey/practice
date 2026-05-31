@@ -11,6 +11,9 @@ plugins {
 
 dependencies {
     implementation(project(":core-common"))
+    implementation(project(":core-ui"))
+    implementation(project(":core-validation"))
+    implementation(project(":core-network"))
 
     implementation(platform(libs.compose.bom))
 
@@ -22,6 +25,9 @@ dependencies {
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
+
+    implementation(libs.retrofit)
+    implementation(libs.kotlinx.serialization.json)
 }
 
 android {

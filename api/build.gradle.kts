@@ -44,31 +44,23 @@ android {
 
 dependencies {
 
-    implementation(libs.androidx.compose.runtime)
-    implementation(libs.dagger.hilt)
-    ksp(libs.dagger.hilt.compiler)
+    implementation(libs.compose.runtime)
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
 
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+//    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
     implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
 
 
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    testImplementation(libs.junit)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.test.manifest)
-    debugImplementation(libs.androidx.ui.tooling)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.activity.compose)
+
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.material3)
+    implementation(libs.ui)
+    implementation(libs.ui.graphics)
 }

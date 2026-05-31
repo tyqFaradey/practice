@@ -26,6 +26,7 @@ fun LoginRoute(
         state = state,
         onLoginChanged = viewModel::onLoginChanged,
         onPasswordChanged = viewModel::onPasswordChanged,
-        onLoginClick = viewModel::login
+        onLoginClick = viewModel::onFormSubmit,
+        onToRegisterClick = viewModel::onToRegister
     )
 }
