@@ -8,6 +8,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.app.navigation.RootRoute
+import com.example.feature_auth.navigation.authNavGraph
+import com.example.feature_users.navigation.usersNavGraph
 
 @Composable
 fun MainNavGraph(
@@ -20,9 +23,9 @@ fun MainNavGraph(
         startDestination = MainRoute.Users,
         modifier = modifier
     ) {
-        composable<MainRoute.Users> {
-            Text("123")
-        }
+        usersNavGraph<MainRoute.Users>(
+            navController = navController,
+        )
         composable<MainRoute.Deposits> {
             Text("123456")
         }

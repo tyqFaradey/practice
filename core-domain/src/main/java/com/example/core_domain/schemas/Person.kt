@@ -1,4 +1,4 @@
-package com.example.feature_auth.api.schemas
+package com.example.core_domain.schemas
 
 import kotlinx.serialization.Serializable
 

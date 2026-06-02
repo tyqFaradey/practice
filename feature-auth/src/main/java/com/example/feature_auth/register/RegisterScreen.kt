@@ -9,11 +9,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.example.core_domain.Gender
+import com.example.core_domain.UI_DATE_FORMAT
+import com.example.core_domain.schemas.Group
 
 import com.example.core_ui.BaseScreen
 import com.example.core_ui.ButtonsPanel
 import com.example.core_ui.Link
 import com.example.core_ui.TextField
+import com.example.core_ui.DatePickerField
+import com.example.core_ui.Dropdown
 import com.example.core_ui.PADDING
 
 @Composable
@@ -22,6 +27,9 @@ fun RegisterScreen(
     onFirstNameChanged: (String) -> Unit,
     onLastNameChanged: (String) -> Unit,
     onMiddleNameChanged: (String) -> Unit,
+    onBirthDateChanged: (String) -> Unit,
+    onGenderChanged: (Gender?) -> Unit,
+    onGroupChanged: (Group?) -> Unit,
     onLoginChanged: (String) -> Unit,
     onEmailChanged: (String) -> Unit,
     onPhoneChanged: (String) -> Unit,
@@ -74,6 +82,38 @@ fun RegisterScreen(
             errors = state.middleNameErrors,
             onValueChange = onMiddleNameChanged
         )
+
+        DatePickerField(
+            label = "Дата рождения",
+            value = state.birthDate,
+            errors = state.birthDateErrors,
+            onDateSelect = onBirthDateChanged,
+            dateFormat = UI_DATE_FORMAT
+        )
+
+        Dropdown(
+            label = "Выберите пол",
+            items = Gender.entries.toList(),
+            selected = state.gender,
+            onSelect = onGenderChanged,
+            itemLabel = {
+                when(it) {
+                    Gender.MALE -> "Мужской"
+                    Gender.FEMALE -> "Женский"
+                }
+            },
+            errors = state.genderErrors
+        )
+
+        Dropdown(
+            label = "Выберите группу",
+            items = state.groups,
+            selected = state.group,
+            onSelect = onGroupChanged,
+            itemLabel = { it.name },
+            errors = state.groupErrors
+        )
+
         TextField(
             label = "Логин",
             value = state.login,

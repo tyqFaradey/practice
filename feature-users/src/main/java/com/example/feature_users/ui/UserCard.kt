@@ -1,6 +1,5 @@
-package ci.nsu.mobile.main.core.ui
+package com.example.feature_users.ui
 
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -9,13 +8,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ci.nsu.mobile.main.model.dto.UserDto
+import com.example.core_domain.schemas.User
+
 
 @Composable
-fun UserCard(user: UserDto, modifier: Modifier = Modifier) {
+fun UserCard(user: User, modifier: Modifier = Modifier) {
     Card {
         Column(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .padding(12.dp)
         ) {

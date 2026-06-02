@@ -12,6 +12,7 @@ plugins {
 dependencies {
     implementation(project(":core-ui"))
     implementation(project(":feature-auth"))
+    implementation(project(":feature-users"))
 
     implementation(platform(libs.compose.bom))
     implementation(libs.core.ktx)

@@ -1,12 +1,11 @@
 package com.example.feature_auth.api.schemas
 
-import com.example.feature_auth.api.schemas.Person
-import kotlinx.serialization.SerialName
+import com.example.core_domain.schemas.Person
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class RegisterRequest(
-    @SerialName("login") val username: String,
+    val login: String,
     val password: String,
     val email: String,
     val phoneNumber: String,

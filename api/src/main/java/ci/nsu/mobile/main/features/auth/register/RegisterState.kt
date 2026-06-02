@@ -1,4 +1,4 @@
-package ci.nsu.mobile.main.features.auth.register
+    package ci.nsu.mobile.main.features.auth.register
 
 import java.time.LocalDate
 

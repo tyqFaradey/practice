@@ -9,10 +9,7 @@ plugins {
 }
 
 dependencies {
-    implementation(libs.core.ktx)
-    implementation(libs.lifecycle.viewmodel.ktx)
-    implementation(libs.coroutines.core)
-    implementation(libs.coroutines.android)
+    implementation(libs.navigation.compose)
 
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)

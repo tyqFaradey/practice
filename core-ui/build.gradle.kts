@@ -7,6 +7,8 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":core-domain"))
+    
     implementation(platform(libs.compose.bom))
     implementation(libs.core.ktx)
 

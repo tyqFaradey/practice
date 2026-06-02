@@ -10,7 +10,7 @@ class BlankValidator @Inject constructor() : Validator<String> {
         val errors = mutableListOf<String>()
 
         if (input.isBlank()) {
-            errors.add("Поле не должено быть пустым")
+            errors.add("Поле обязательно для заполнения")
         }
 
         return ValidationResult(

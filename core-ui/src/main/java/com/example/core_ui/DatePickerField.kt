@@ -25,25 +25,25 @@ import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-private const val DATE_PATTERN = "dd-MM-yyyy"
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BirthDateField(
-    value: String   ,
+fun DatePickerField(
+    label: String,
+    value: String,
     errors: List<String>,
-    onDateSelect: (String) -> Unit
+    onDateSelect: (String) -> Unit,
+    dateFormat: String = "yyyy-MM-dd"
 ) {
     val isError = errors.isNotEmpty()
     var open by remember { mutableStateOf(false) }
-    val formatter = remember { DateTimeFormatter.ofPattern(DATE_PATTERN) }
+    val formatter = remember { DateTimeFormatter.ofPattern(dateFormat) }
 
     OutlinedTextField(
         value = value,
         onValueChange = {},
         isError = isError,
         readOnly = true,
-        label = { Text("Дата рождения") },
+        label = { Text(label) },
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = PADDING, end = PADDING),

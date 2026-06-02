@@ -22,14 +22,14 @@ dependencyResolutionManagement {
 rootProject.name = "practice"
 //include(":api")
 
-include(":app")
+include(":core-domain")
+include(":core-utils")
 include(":core-common")
 include(":core-network")
-
-include(":api")
-
-
-
-include(":feature-auth")
 include(":core-validation")
 include(":core-ui")
+
+include(":feature-auth")
+include(":feature-users")
+
+include(":app")

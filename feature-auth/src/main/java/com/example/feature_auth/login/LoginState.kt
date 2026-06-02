@@ -16,7 +16,7 @@ data class LoginState(
 
 fun LoginState.toLoginRequest(): LoginRequest {
     return LoginRequest(
-        username = login,
+        login = login,
         password = password,
     )
 }

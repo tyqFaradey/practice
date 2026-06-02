@@ -4,26 +4,30 @@ import android.util.Log
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 import com.example.core_common.BaseViewModel
+import com.example.core_domain.Gender
+import com.example.core_domain.schemas.Group
 import com.example.core_validation.rules.BlankValidator
 import com.example.core_validation.rules.EmailValidator
 import com.example.core_validation.rules.PasswordValidator
 import com.example.core_validation.rules.LoginValidator
 import com.example.core_validation.rules.PhoneValidator
-import com.example.feature_auth.login.LoginEvent
-import com.example.feature_auth.login.LoginForm
-import com.example.feature_auth.login.toLoginRequest
+import com.example.core_validation.rules.RequiredSelectionValidator
 import com.example.feature_auth.repository.AuthRepository
+import com.example.feature_auth.repository.GroupRepository
 
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
     private val repository: AuthRepository,
+    private val groupRepository: GroupRepository,
 
     private val formValidator: RegisterFormValidator,
+
+    private val genderValidator: RequiredSelectionValidator<Gender>,
+    private val groupValidator: RequiredSelectionValidator<Group>,
 
     private val blankValidator: BlankValidator,
     private val loginValidator: LoginValidator,
@@ -33,6 +37,22 @@ class RegisterViewModel @Inject constructor(
 ) : BaseViewModel<RegisterEvent, RegisterState>(
         initialState = RegisterState()
     ) {
+    init {
+        initDefaults()
+    }
+
+    private fun initDefaults() {
+        viewModelScope.launch {
+            val fetchedGroups = groupRepository.getGroups().getOrNull()!!
+
+            updateState {
+                copy(
+                    groups = fetchedGroups
+                )
+            }
+        }
+    }
+
     fun onFirstNameChanged(value: String) {
         val validation = blankValidator.validate(value)
         updateState {
@@ -57,6 +77,36 @@ class RegisterViewModel @Inject constructor(
             copy(
                 middleName = value,
                 middleNameErrors = validation.errors
+            )
+        }
+    }
+
+    fun onBirthDateChanged(value: String) {
+        val validation = blankValidator.validate(value)
+        updateState {
+            copy(
+                birthDate = value,
+                birthDateErrors = validation.errors
+            )
+        }
+    }
+
+    fun onGenderChanged(value: Gender?) {
+        val validation = genderValidator.validate(value)
+        updateState {
+            copy(
+                gender = value,
+                genderErrors = validation.errors
+            )
+        }
+    }
+
+    fun onGroupChanged(value: Group?) {
+        val validation = groupValidator.validate(value)
+        updateState {
+            copy(
+                group = value,
+                groupErrors = validation.errors
             )
         }
     }
@@ -105,6 +155,9 @@ class RegisterViewModel @Inject constructor(
             firstName = currentState.firstName,
             lastName = currentState.lastName,
             middleName = currentState.middleName,
+            birthDate = currentState.birthDate,
+            gender = currentState.gender,
+            group = currentState.group,
             login = currentState.login,
             email = currentState.email,
             phone = currentState.phone,
@@ -118,6 +171,9 @@ class RegisterViewModel @Inject constructor(
                 firstNameErrors = validationResult.firstNameErrors,
                 lastNameErrors = validationResult.lastNameErrors,
                 middleNameErrors = validationResult.middleNameErrors,
+                birthDateErrors = validationResult.birthDateErrors,
+                genderErrors = validationResult.genderErrors,
+                groupErrors =  validationResult.groupErrors,
                 loginErrors = validationResult.loginErrors,
                 emailErrors = validationResult.emailErrors,
                 phoneErrors = validationResult.phoneErrors,
