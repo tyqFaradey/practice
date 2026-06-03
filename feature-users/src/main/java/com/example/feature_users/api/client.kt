@@ -6,6 +6,6 @@ import com.example.core_domain.schemas.User
 
 
 interface UsersApi {
-    @GET("/users")
+    @GET("users")
     suspend fun getUsers(): List<User>
 }

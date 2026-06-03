@@ -5,35 +5,36 @@ plugins {
     alias(libs.plugins.ksp)
 
     alias(libs.plugins.hilt)
-    alias(libs.plugins.serialization)
 }
 
 dependencies {
-    implementation(project(":core-session"))
-    implementation(libs.navigation.compose)
+
+    implementation(libs.core.ktx)
 
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
 
-    implementation(libs.retrofit)
-    implementation(libs.okhttp)
-    implementation(libs.okhttp.logging.interceptor)
-
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.retrofit.kotlinx.serialization.converter)
+    implementation(libs.datastore.preferences)
 }
 
 android {
-    namespace = "com.example.core_network"
+    namespace = "com.example.core_session"
     compileSdk = 36
 
     defaultConfig {
         minSdk = 29
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {

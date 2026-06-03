@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
 
@@ -10,10 +10,8 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":core-ui"))
-    implementation(project(":feature-auth"))
-    implementation(project(":feature-users"))
-    implementation(project(":feature-calculation"))
+    implementation(project(":core-common"))
+    implementation(project(":core-domain"))
 
     implementation(platform(libs.compose.bom))
     implementation(libs.core.ktx)
@@ -24,26 +22,21 @@ dependencies {
     implementation(libs.ui)
     implementation(libs.material3)
 
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
+
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
 }
 
 android {
-    namespace = "com.example.app"
+    namespace = "com.example.main"
     compileSdk = 36
 
-    buildFeatures {
-        compose = true
-    }
-
-
     defaultConfig {
-        applicationId = "com.example.app"
         minSdk = 29
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
     }
 
     buildTypes {

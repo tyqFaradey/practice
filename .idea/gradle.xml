@@ -12,12 +12,16 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core-common" />
+            <option value="$PROJECT_DIR$/core-database" />
             <option value="$PROJECT_DIR$/core-domain" />
             <option value="$PROJECT_DIR$/core-network" />
+            <option value="$PROJECT_DIR$/core-session" />
             <option value="$PROJECT_DIR$/core-ui" />
             <option value="$PROJECT_DIR$/core-utils" />
             <option value="$PROJECT_DIR$/core-validation" />
             <option value="$PROJECT_DIR$/feature-auth" />
+            <option value="$PROJECT_DIR$/feature-calculation" />
+            <option value="$PROJECT_DIR$/feature-deposits" />
             <option value="$PROJECT_DIR$/feature-users" />
           </set>
         </option>

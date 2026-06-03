@@ -5,14 +5,16 @@ import okhttp3.Response
 import javax.inject.Inject
 import javax.inject.Singleton
 
+import com.example.core_session.SessionRepository
+
 @Singleton
 class AuthInterceptor @Inject constructor(
-    private val tokenManager: TokenManager
+    private val sessionRepository: SessionRepository
 ) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
-        val token = tokenManager.getToken()
+        val token = sessionRepository.getToken()
 
         val newRequest = if (token != null) {
             originalRequest.newBuilder()

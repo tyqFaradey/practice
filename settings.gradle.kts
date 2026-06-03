@@ -31,5 +31,10 @@ include(":core-ui")
 
 include(":feature-auth")
 include(":feature-users")
-
 include(":app")
+
+include(":core-database")
+
+include(":feature-calculation")
+include(":feature-deposits")
+include(":core-session")

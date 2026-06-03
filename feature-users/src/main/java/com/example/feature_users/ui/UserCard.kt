@@ -19,7 +19,6 @@ fun UserCard(user: User, modifier: Modifier = Modifier) {
                 .fillMaxWidth()
                 .padding(12.dp)
         ) {
-            Text("ID: ${user.id}")
             Text("Логин: ${user.login}")
             Text("Почта: ${user.email} мес.")
             Text("Телефон: ${user.phoneNumber}%")

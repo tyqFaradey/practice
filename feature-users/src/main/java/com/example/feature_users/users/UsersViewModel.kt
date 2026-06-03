@@ -20,12 +20,9 @@ class UsersViewModel @Inject constructor(
 
     fun onRefresh() {
         viewModelScope.launch {
-            val fetchedUsers = repository.getUsers().getOrNull()!!
-
-            updateState {
-                copy(
-                    users = fetchedUsers
-                )
+            val fetchedUsers = repository.getUsers().getOrNull()
+            if (fetchedUsers != null) {
+                updateState { copy(users = fetchedUsers) }
             }
         }
     }

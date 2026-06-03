@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
 
@@ -10,40 +10,33 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":core-common"))
+    implementation(project(":core-domain"))
+    implementation(project(":core-database"))
+    implementation(project(":core-session"))
     implementation(project(":core-ui"))
-    implementation(project(":feature-auth"))
-    implementation(project(":feature-users"))
-    implementation(project(":feature-calculation"))
+
 
     implementation(platform(libs.compose.bom))
-    implementation(libs.core.ktx)
 
-    implementation(libs.activity.compose)
-    implementation(libs.navigation.compose)
-    implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.ui)
     implementation(libs.material3)
+
+    implementation(libs.navigation.compose)
 
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
+
+    implementation(libs.kotlinx.serialization.json)
 }
 
 android {
-    namespace = "com.example.app"
+    namespace = "com.example.feature_calculation"
     compileSdk = 36
 
-    buildFeatures {
-        compose = true
-    }
-
-
     defaultConfig {
-        applicationId = "com.example.app"
         minSdk = 29
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
     }
 
     buildTypes {
@@ -59,4 +52,3 @@ android {
         jvmTarget = "11"
     }
 }
-
