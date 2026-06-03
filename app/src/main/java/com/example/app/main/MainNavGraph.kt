@@ -12,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.app.navigation.RootRoute
 import com.example.feature_auth.navigation.authNavGraph
 import com.example.feature_calculation.navigation.calculationNavGraph
+import com.example.feature_deposits.navigation.depositsNavGraph
 import com.example.feature_users.navigation.usersNavGraph
 
 @Composable
@@ -28,9 +29,9 @@ fun MainNavGraph(
         usersNavGraph<MainRoute.Users>(
             navController = navController,
         )
-        composable<MainRoute.Deposits> {
-            Text("123456")
-        }
+        depositsNavGraph<MainRoute.Deposits>(
+            navController = navController,
+        )
         calculationNavGraph<MainRoute.Calculation>(
             navController = navController,
         )

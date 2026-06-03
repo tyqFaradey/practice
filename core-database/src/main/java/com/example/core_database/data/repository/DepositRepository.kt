@@ -23,4 +23,12 @@ class DepositRepository @Inject constructor(
     fun getAll(): Flow<List<Deposit>> {
         return dao.getAll()
     }
+
+    fun getDepositsByUserId(userId: Int): Flow<List<Deposit>> {
+        return dao.getDepositsByUserId(userId)
+    }
+
+     suspend fun deleteDepositsByUserId(userId: Int) {
+        return dao.deleteDepositsByUserId(userId)
+    }
 }

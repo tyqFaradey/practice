@@ -14,6 +14,7 @@ dependencies {
     implementation(project(":feature-auth"))
     implementation(project(":feature-users"))
     implementation(project(":feature-calculation"))
+    implementation(project(":feature-deposits"))
 
     implementation(platform(libs.compose.bom))
     implementation(libs.core.ktx)

@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 fun BaseScreen(
     modifier: Modifier = Modifier,
     title: String = "",
+    scrollable: Boolean = true,
     bottomBar: @Composable () -> Unit = {},
     content: @Composable ColumnScope.() -> Unit,
 
@@ -34,11 +35,18 @@ fun BaseScreen(
         bottomBar = bottomBar,
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
+
+        val scrollModifier = if (scrollable) {
+            Modifier.verticalScroll(rememberScrollState())
+        } else {
+            Modifier
+        }
+
         Column(
             modifier = modifier
                 .padding(innerPadding)
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState()),
+                .then(scrollModifier),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(12.dp),
 
